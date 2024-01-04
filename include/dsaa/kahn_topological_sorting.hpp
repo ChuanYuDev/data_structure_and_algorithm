@@ -1,5 +1,5 @@
-#ifndef KAHN_TOPOLOGICAL_SORTING
-#define KAHN_TOPOLOGICAL_SORTING
+#ifndef DSAA_KAHN_TOPOLOGICAL_SORTING_HPP_
+#define DSAA_KAHN_TOPOLOGICAL_SORTING_HPP_
 
 #include <vector>
 #include <queue>
@@ -48,4 +48,4 @@ namespace dsaa
     }
 } // namespace dsaa
 
-#endif // KAHN_ALGORITHM_FOR_TOPOLOGICAL_SORTING
+#endif // DSAA_KAHN_TOPOLOGICAL_SORTING_HPP_

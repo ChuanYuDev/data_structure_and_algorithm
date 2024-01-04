@@ -23,5 +23,6 @@ function(add_dsaa_test TEST_NAME TEST_SOURCE)
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endfunction()
 
+add_dsaa_test(test_binary_search_tree test_binary_search_tree.cpp)
 # add_dsaa_test(test_sort ${ALGORITHM}/test_sort.cpp)
 add_dsaa_test(test_kahn_topological_sorting test_kahn_topological_sorting.cpp)
