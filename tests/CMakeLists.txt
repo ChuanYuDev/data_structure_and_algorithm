@@ -6,7 +6,7 @@ add_library(${TEST_LIB} INTERFACE)
 target_include_directories(
     ${TEST_LIB} INTERFACE 
     ${DSAA_PUBLIC_HEADER}
-    # ${LEETCODE_PRIVATE_HEADER}
+    ${DSAA_PRIVATE_HEADER}
 )
 
 set(Boost_USE_STATIC_LIBS ON)
@@ -24,5 +24,5 @@ function(add_dsaa_test TEST_NAME TEST_SOURCE)
 endfunction()
 
 add_dsaa_test(test_binary_search_tree test_binary_search_tree.cpp)
-# add_dsaa_test(test_sort ${ALGORITHM}/test_sort.cpp)
 add_dsaa_test(test_kahn_topological_sorting test_kahn_topological_sorting.cpp)
+add_dsaa_test(test_sort test_sort.cpp)

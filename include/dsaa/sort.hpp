@@ -1,25 +1,22 @@
-#ifndef CPP_LIB_SORT_HPP_
-#define CPP_LIB_SORT_HPP_
+#ifndef DSAA_SORT_HPP_
+#define DSAA_SORT_HPP_
 
 #include <vector>
-#include <cstdint>
 
-#include <cpp_lib/utils/common.hpp>
-
-namespace cpp_lib
+namespace dsaa
 {
 
 template <typename T>
 void selectionSort(std::vector<T> &v)
 {
-    vec_size_t<T> min_id = 0;
+    std::size_t min_id = 0;
     T tmp;
 
-    for(vec_size_t<T> i = 0; i < v.size(); ++i)
+    for(std::size_t i = 0; i < v.size(); ++i)
     {
         min_id = i;
 
-        for(vec_size_t<T> j = i + 1; j < v.size(); ++j)
+        for(std::size_t j = i + 1; j < v.size(); ++j)
         {
             if (v.at(j) < v.at(min_id))
                 min_id = j;
@@ -34,9 +31,9 @@ template <typename T>
 void insertionSort(std::vector<T> &v)
 {
     T key;
-    vec_size_t<T> j;
+    std::size_t j;
 
-    for (vec_size_t<T> i = 1; i < v.size(); ++i)
+    for (std::size_t i = 1; i < v.size(); ++i)
     {
         key = v.at(i);
 
@@ -60,11 +57,13 @@ void bubbleSort(std::vector<T> &v)
     T tmp;
     bool swap;
 
-    for (vec_size_t<T> i = 0; i < v.size(); ++i)
+    std::size_t num = v.size();
+
+    for (std::size_t i = 0; i < num; ++i)
     {
         swap = false;
 
-        for (vec_size_t<T> j = 0; j < v.size() - 1 - i; ++j)
+        for (std::size_t j = 0; j < num - 1 - i; ++j)
         {
             if (v.at(j) > v.at(j + 1))
             {
@@ -79,7 +78,7 @@ void bubbleSort(std::vector<T> &v)
 }
 
 template <typename T>
-std::vector<T> mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
+std::vector<T> mergeSort(std::vector<T> &v, std::size_t begin, std::size_t end)
 {
     if (end - begin == 0)
         return {};
@@ -87,16 +86,16 @@ std::vector<T> mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> e
     if (end - begin == 1)
         return {v.at(begin)};
 
-    vec_size_t<T> mid = (begin + end) / 2;    
+    std::size_t mid = (begin + end) / 2; 
 
     auto left = mergeSort(v, begin, mid);
     auto right = mergeSort(v, mid, end);
 
-    vec_size_t<T> i = 0, j = 0;
+    std::size_t i = 0, j = 0;
 
     std::vector<T> result;
 
-    for (vec_size_t<T> k = 0; k < end - begin; ++k)
+    for (std::size_t k = 0; k < end - begin; ++k)
     {
         if (i >= mid - begin)
         {
@@ -123,6 +122,7 @@ std::vector<T> mergeSort(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> e
             ++j;
         }
     }
+    
     return result;
 }
 
@@ -132,65 +132,6 @@ std::vector<T> mergeSort(std::vector<T> &v)
     return mergeSort(v, 0, v.size());    
 }
 
-template <typename T>
-std::pair<std::vector<T>, std::uint32_t> countInversions(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
-{
-    if (end - begin == 0)
-        return {{}, 0};
+} // namespace dsaa
 
-    if (end - begin == 1)
-        return {{v.at(begin)}, 0};
-
-    vec_size_t<T> mid = (begin + end) / 2;    
-
-    auto pair_left = countInversions(v, begin, mid);
-    const auto &left = pair_left.first;
-
-    auto pair_right = countInversions(v, mid, end);
-    const auto &right = pair_right.first;
-
-    vec_size_t<T> i = 0, j = 0, split_inversions_num = 0;
-
-    std::vector<T> result;
-
-    for (vec_size_t<T> k = 0; k < end - begin; ++k)
-    {
-        if (i >= mid - begin)
-        {
-            result.push_back(right.at(j));
-            ++j;
-            continue;
-        }
-
-        if (j >= end - mid)
-        {
-            result.push_back(left.at(i));
-            ++i;
-            continue;
-        }
-
-        if (left.at(i) < right.at(j))
-        {
-            result.push_back(left.at(i));
-            ++i;
-        }
-        else
-        {
-            result.push_back(right.at(j));
-            ++j;
-            split_inversions_num += mid - i - begin;
-        }
-    }
-
-    return {result, pair_left.second + split_inversions_num + pair_right.second};
-}
-
-template <typename T>
-std::pair<std::vector<T>, uint32_t> countInversions(std::vector<T> &v)
-{
-    return countInversions(v, 0, v.size());
-}
-
-} // namespace cpp_lib
-
-#endif // CPP_LIB_SORT_HPP_
+#endif // DSAA_SORT_HPP_

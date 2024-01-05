@@ -7,5 +7,6 @@ project(dsaa VERSION 0.1.2)
 
 set(DSAA dsaa)
 set(DSAA_PUBLIC_HEADER ${CMAKE_SOURCE_DIR}/include/)
+set(DSAA_PRIVATE_HEADER ${CMAKE_SOURCE_DIR})
 
 add_subdirectory(tests)
