@@ -3,11 +3,13 @@
 #include <boost/test/unit_test.hpp>
 
 #include "dsaa/sort.hpp"
-#include "common/compare.hpp"
+#include "external/common/compare.hpp"
+
+
+BOOST_AUTO_TEST_SUITE(test_sort)
 
 using common::areVectorsSame;
 
-BOOST_AUTO_TEST_SUITE(test_sort)
 BOOST_AUTO_TEST_CASE(test_sort_0)
 {
     std::vector<double> v = {2.2, 0.9, 1, 5.1, 3.4};

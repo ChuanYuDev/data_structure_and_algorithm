@@ -9,3 +9,9 @@
     - If the in-degree of neighbouring nodes is reduced to zero, then add it to the queue.
 - Repeat until the queue is empty.
 - If the count of visited nodes is not equal to the number of nodes in the graph then the topological sort is not possible for the given graph.
+
+### Complexity
+
+`O(V + E)`
+- `V`: number of vertices
+- `E`: number of edges
