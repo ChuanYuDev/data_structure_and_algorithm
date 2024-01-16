@@ -19,10 +19,13 @@ public:
     }
 };
 
-class BstTree
+class Bst
 {
+private:
+    Node *root = nullptr;
+
 public:
-    BstTree() = default;
+    Bst() = default;
 
     Node *& search(Node *&node_ptr, int key)
     {
@@ -85,13 +88,10 @@ public:
         }
     }
 
-    ~BstTree()
+    ~Bst()
     {
         destruct(root);
     }
-
-private:
-    Node *root = nullptr;
 };
 
 } // namespace dsaa

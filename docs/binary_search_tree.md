@@ -1,6 +1,17 @@
 # Binary search tree
 - No duplicate, each key is unique
 
+### 
+```c++
+class Node
+{
+public:
+    int key = 0;
+    Node *left_child = nullptr;
+    Node *right_child = nullptr;
+};
+```
+
 ### Search for key K in tree T
 - Start at the root
 - Traverse left (if `K < key` at current node) / right (if `K > key` at current node) child pointers' as need
