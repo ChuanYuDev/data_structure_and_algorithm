@@ -24,6 +24,7 @@ function(add_dsaa_test TEST_NAME TEST_SOURCE)
 endfunction()
 
 add_dsaa_test(test_binary_search_tree test_binary_search_tree.cpp)
+add_dsaa_test(test_count_inversions test_count_inversions.cpp)
 add_dsaa_test(test_graph_search test_graph_search.cpp)
 add_dsaa_test(test_kahn_topological_sorting test_kahn_topological_sorting.cpp)
 add_dsaa_test(test_linked_list test_linked_list.cpp)

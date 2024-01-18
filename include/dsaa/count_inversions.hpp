@@ -1,31 +1,34 @@
 #ifndef DSAA_COUNT_INVERSIONS_HPP_
 #define DSAA_COUNT_INVERSIONS_HPP_
 
+#include <vector>
+#include <cstdint>
+
 namespace dsaa
 {
 
 template <typename T>
-std::pair<std::vector<T>, std::uint32_t> countInversions(std::vector<T> &v, vec_size_t<T> begin, vec_size_t<T> end)
+std::pair<std::vector<T>, std::uint32_t> countInversions(std::vector<T> &v, std::size_t begin, std::size_t end)
 {
     if (end - begin == 0)
         return {{}, 0};
 
     if (end - begin == 1)
-        return {{v.at(begin)}, 0};
+        return {{v[begin]}, 0};
 
-    vec_size_t<T> mid = (begin + end) / 2;    
+    std::size_t mid = (begin + end) / 2;
 
-    auto pair_left = countInversions(v, begin, mid);
+    const auto pair_left = countInversions(v, begin, mid);
     const auto &left = pair_left.first;
 
-    auto pair_right = countInversions(v, mid, end);
+    const auto pair_right = countInversions(v, mid, end);
     const auto &right = pair_right.first;
 
-    vec_size_t<T> i = 0, j = 0, split_inversions_num = 0;
+    std::size_t i = 0, j = 0, split_inversions_num = 0;
 
     std::vector<T> result;
 
-    for (vec_size_t<T> k = 0; k < end - begin; ++k)
+    for (std::size_t k = 0; k < end - begin; ++k)
     {
         if (i >= mid - begin)
         {
